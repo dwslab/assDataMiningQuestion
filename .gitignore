@@ -1,0 +1,7 @@
+*.swp
+*.cache
+vendor
+psalm.xml
+composer.lock
+syntax.log
+coverage/

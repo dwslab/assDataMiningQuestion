@@ -1,0 +1,86 @@
+openapi: 3.0.1
+info:
+  title: Data Mining Evaluation Server
+  description: 'This is a server which evaluates a system result with a gold standard'
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: 1.0.0
+externalDocs:
+  description: Find out more at Github
+  url: https://github.com/dwslab/melt
+paths:
+  /metric:
+    post:
+      summary: Computes the evaluation measure
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+                - removeHeader
+                - gold
+                - maxPoints
+              type: object
+              properties:
+                removeHeader:
+                  type: boolean
+                  description: The boolean value if the header of the gold file should be removed. Can be ignored if a different file format than csv is used. This value is set when generating a new data mining question.
+                gold:
+                  type: string
+                  format: binary
+                  description: The file which contains the gold standard.
+                system:
+                  type: string
+                  format: binary
+                  description: The file which contains the system predictions.
+      responses:
+        '200':
+          description: "Returns a json with points (float: 0-1) and description(string). In case no system file is provided, only a description of the parsed gold standard is necessary.
+            In case the system file is provided, the description shown to the learner as solution output."
+          content:
+            application/json:
+              schema:
+                required:
+                  - description
+                type: object
+                properties:
+                  points:
+                    type: number
+                    format: float
+                    description: "The points as float value which is the computed evaluation measure in the 
+                      range (0-1) as float. Only necessary when a system file is provided."
+                  description:
+                    type: string
+                    description: "In case the system file is provided, this text is shown to the learner as solution output 
+                      (e.g. original evaluation measure and not the points; amount of true positives etc.). 
+                      In case the system file is not provided, then it contains a text which
+                      describes the parsed gold standard (how many values are parsed etc)"
+        '400':
+          description: Some errors on the client side(like not providing a gold standard OR system file is formatted in the wrong way).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Any server errors.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          required:
+            - message
+          properties:
+            message:
+              type: string
+              description: Human readable message that summarize the context, cause, and general solution for the error at hand.
+            code:
+              type: string
+              description: Internal error code for documentation-specific notation of error. Can also just be the HTTP status code.

@@ -1,0 +1,50 @@
+// English Language File for assDataMiningQuestion Plugin
+<!-- language file start -->
+assDataMiningQuestion#:#Data Mining Question
+label_value1#:#File with solution uploaded
+label_value2#:#Points entered for this answer (any number)
+any_text#:#any text or empty
+training_file#:#Training file
+training_file_info#:#If given, then this file will be available as download when the question will be shown. It should contain training data for a ML approach (usually features/data with corresponding target value).
+test_feature_file#:#Test file containing features
+test_feature_file_info#:#If given, then this file will be available as download when the question will be shown. It should contain only feature/data values without the target variable.
+test_target_file#:#Test file containing target
+test_target_file_info#:#This file should contain only the target variable (gold standard) formatted as CSV.
+skip_first_line#:#Skip first line
+skip_first_line_info#:#Check if the first line of the test file with classes contains a header and should be skipped.
+file_suffix#:#Expected filename ending
+file_suffix_info#:#Enter a comma separated list of allowed file extensions(e.g. doc,xls,odt) or leave empty for no restrictions
+eval#:#Evaluation measure
+eval_accuracy#:#Accuracy
+eval_precision#:#Precision
+eval_recall#:#Recall
+eval_fmeasure#:#F-Measure
+eval_custom#:#Custom (external evaluation service)
+eval_custom_url#:#External Url
+eval_custom_url_info#:#Url to an external service, doing the evaluation
+eval_custom_url_wrong_format#:#The URL you entered is not a valid one (it has to start with http:// or https:// and should not contain any spaces).
+Url is not 
+eval_max_error#:#Max error
+eval_mean_absolute_error#:#Mean absolute error
+eval_mean_squared_error#:#Mean squared error (MSE)
+eval_root_mean_squared_error#:#Root mean squared error (RMSE)
+average#:#Average
+average_micro#:#Micro
+average_macro#:#Macro
+average_weighted#:#Weighted
+average_binary#:#Binary
+positive_label#:#Positive label
+eval_min_value#:#Minimum Value
+eval_min_value_info#:#Value which is the minimum (for later scaling)
+eval_max_value#:#Maximum Value
+eval_max_value_info#:#Value which is the maximum (for later scaling)
+max_size#:#Maximum upload size
+maxsize_info#:#Enter the maximum size in KB that should be allowed for system file upload.
+maximum_file_size_info#:#The maximum allowed size of your upload is
+allowed_extensions_info#:#The following file extensions are allowed
+already_uploaded_info#:#The following file was uploaded
+file_upload_button_override#:#Overwrite
+file_upload_button#:#Upload
+training_data_info#:#File with training data
+test_feature_data_info#:#File with test features
+best_solution_file_name#:#best_solution.csv
