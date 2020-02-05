@@ -97,7 +97,7 @@ If the first non empty line is not valid it is assumed to be the header.
     - Root mean squared error (RMSE)
     
 - Custom (external evaluation service)
-    - An external URL pointing to a REST endpoint which does the evaluation. The interface is defined by a swagger file (live view) and a small python implementation is available in the docs folder.
+    - An external URL pointing to a REST endpoint which does the evaluation. The interface is defined by a [swagger file](doc/swagger.yaml) ([live view](https://editor.swagger.io/?url=https://raw.githubusercontent.com/dwslab/assDataMiningQuestion/master/doc/swagger.yaml)) and a small [python implementation](doc/restEndpoint.py) is available in the docs folder.
       You can test the endpoint usually by executing 
       ```
       curl -F 'removeHeader=True' -F 'gold=@iris_test_class.csv' http://127.0.0.1:41193/metric/precision_micro
