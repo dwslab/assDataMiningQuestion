@@ -27,9 +27,31 @@ git clone https://github.com/dwslab/assDataMiningQuestion
 ```
 As ILIAS administrator, install and activate the plugin in the ILIAS Plugin Administration menu:
 1) Administration->Plugins
-2) Search for "assDataMiningQuestion" and click on "Actions", then "Install"
+2) Search for Plugin "assDataMiningQuestion" (ID is "dataminingqu") and click on "Actions", then "Install"
+3) Click on Actions again and choose "Activate"
 
-### Screenshots
+### Creating a question
+
+To create a data mining question, select a course and add a new test by clicking on "Add New Item" -> "Test" (below category Assessment).
+Choose a title for the test (which can contain multiple questions) and click on "Add test" to actually create it.
+To add a question, click on the "Questions" tab on the left side and then "Create question".
+Select the question type "Data Mining Question" and click on "Create".
+Now you can change the properties of the question (each property is described in more detail in the below section "Description of Data Mining settings").
+Example files for train and test can be found in the [doc/exampleFiles](doc/exampleFiles) directory.
+These are generated with the [python file](doc/create_train_test_files.py) in the doc folder.
+Afterwards click on "Save" and check the message on the top (blue background) if the parsing of the file works as expected.
+The test itself also has settings with can be modified. They also have an impact on the data mining question.
+The settings can be found in the test menu at tab "Settings". Some of the important settings are explained below in the section "Important settings of test".
+For testing the question you have to activate the test at "Settings", "General" tab, "Availability" category, "Online" checkbox.
+If you also finished editing these settings, you can try out the test by clicking on the "Info" tab of the test and then "Start the test".
+You should now see the question text and a possibility to upload a file.
+If you uploaded a valid file, click on "Finish the Test" and afterwards you see the results.
+If you click on "Detailed Results" you also see the points per question.
+For the data mining question you see the uploaded file as well as the best solution which shows a link to the uploaded gold standard.
+If you want to change this behaviour, you have to change the test settings.
+
+
+#### Screenshots
 
 Creating a Data Mining Question:
 
@@ -40,7 +62,7 @@ Take a test:
 ![Take a test](doc/takeTest.png?raw=true "Take a test")
 
 
-### Description of Data Mining settings
+#### Description of Data Mining settings
 
 - Title
     - The title of the question (shown at the top of the test)
@@ -58,11 +80,12 @@ If the first non empty line is not valid it is assumed to be the header.
 - Working Time
     - the time available to do the test
 - Training file
-    - a file with training data (it should contain the features as well as the target which is to predict).
+    - a file with training data (it should contain the features as well as the target which should be predicted).
     This is optional because the training data can also be provided within the test or just as a link to an external file in the test question.
-    If a file is provided a link to this file will be shown when a particpant takes this test.
+    If a file is provided, a link to this file will be shown when a particpant takes this test.
 - Test file containing features
-    - a file with test data (it should only contain the features and not the target values). It is optional because you could provide it also in a different way.
+    - a file with test data (it should only contain the features and not the target values). 
+    It is optional because you could provide it also in a different way (similar to the training file).
 - Test file containing target
     - the only required file which should contain only the target values.
 - Skip first line
@@ -70,21 +93,21 @@ If the first non empty line is not valid it is assumed to be the header.
 - Evaluation measure
     - Currently nine evaluation measure are implemented (see Available evaluation measures)
 - Expected filename ending
-    - The expected file name ending of files which the participant should upload. During upload only the files with such an extension are shown. 
-      The field can be also left empty for no file extension restriction.
+    - The expected file name ending of files which the participant should upload. During upload only the files with such an extension are shown.
+    It is a comma speparated list of wile extensions without the dot (e.g. doc,xls,odt).
+    The field can be also left empty for no file extension restriction.
 - Maximum upload size
     - The maximum upload size in KB for the participants file (solution / file with participants predictions).
 - Points
-    - The number of points for this question. Depending on much weight you want to give to this question.
+    - The number of points for this question. Depending on how much weight you want to give to this question.
 
 #### Available evaluation measures
 
 - Classification
+    - for each of the following measures (except accuracy), an average has to be selected (micro, macro, weighted or binary). 
+      If binary is selected additionally the positive label has to be provided.
     - Accuracy
-        - The usual accuracy value which also works for multiclass
     - Precision
-        - for precision as well as recall and f measure, the average has to be selected (micro, macro weighted or binary). 
-          If binary is selected addittionally the positive label has to be provided.
     - Recall
     - F-Measure
 - Regression
