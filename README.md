@@ -2,21 +2,20 @@ Data Mining Question Plugin for ILIAS
 ==========
 
 This repository contains a [Test Question Plugin](https://docu.ilias.de/goto_docu_pg_64260_42.html) for [ILIAS](https://www.ilias.de).
-It allows to generate a specific "Data Mining Question" in an Ilias test. General information about tests in Ilias can be found at the [Ilias Documentation](https://docu.ilias.de/goto_docu_pg_91122_6024.html). 
+It allows to generate a "Data Mining Question" in an ILIAS test. For general information about tests in ILIAS, take a look at the [ILIAS Documentation](https://docu.ilias.de/goto_docu_pg_91122_6024.html). 
 
 The idea is similar to a [kaggle competition](https://www.kaggle.com/competitions).
-A test creator / teacher can upload a training file for machine learning algorithms as well as a file with features but without predictions.
-The test participant can then take the test and upload the predicted values for the given features.
-A final score will be automatically computed.
-If configured, the participants can also see their position in a Highscore list.
-Usually (like in Kaggle competitions) there are two tests: 
-1. in the first test, participants can upload their solutions many times and have a highscore to see how well they perform relative to others
+An instructor can upload a training file for machine learning algorithms as well as a file with features but without predictions.
+The participant can then take the test and upload the predicted values for the given features. The final score of the test is automatically computed according to a metric specified by the instructor (e.g. Precision, Recall, F1-Score, ..).
+If configured, the participants can also see their current performance in a highscore board.
+Usually (like in Kaggle competitions) there are two types of tests:
+1. Participants can upload their solutions many times and have a highscore to see how well they perform relative to others
  (this allows a bit of overfitting because they can upload and adjust their predictions multiple times)
-2. a test with another hold out set which allows only one upload to see how well the model generalizes
+2. The test has a holdout set which allows only one upload to see how well the model generalizes
 Both scenarios can be realized with this plugin by creating two independent tests with the corresponding settings.
 
 This plugin is not restricted to Classification or Regression but can also be extended with a custom evaluation service.
-This allows any setting where a gold standard exists and could be automatically evaluated e.g. image detection.
+This allows any setting where a gold standard exists and an automatic evaluation is possible (e.g. in image detection).
 
 ### Installation
 Start at your ILIAS root directory
