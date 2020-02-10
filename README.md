@@ -35,7 +35,8 @@ To create a data mining question, select a course and add a new test by clicking
 Choose a title for the test (which can contain multiple questions) and click on "Add test" to actually create it.
 To add a question, click on the "Questions" tab on the left side and then "Create question".
 Select the question type "Data Mining Question" and click on "Create".
-Now you can change the properties of the question (each property is described in more detail in the below section "Description of Data Mining settings").
+Now you can change the properties of the question (every property is described in more detail in the section "Description of Data Mining settings").
+
 Example files for train and test can be found in the [doc/exampleFiles](doc/exampleFiles) directory.
 These are generated with the [python file](doc/create_train_test_files.py) in the doc folder.
 Afterwards click on "Save" and check the message on the top (blue background) if the parsing of the file works as expected.
@@ -70,33 +71,31 @@ Take a test:
 - Description
     - Description of the question  
 - Question
-    - The question text presented below the title e.g.
-```Given the training data below, try to create a maschine learning model to make predictions for the given test features.
-Please upload the predictions as a csv file. In each line the last non-empty cell is used as a prediction.
-Empty lines or lines which only contains empty cells are skipped.
-If the first non empty line is not valid it is assumed to be the header.
+    - The question text presented below the title, e.g.
+```Given the training data below, try to create a machine learning model to make predictions for the given test features.
+Please upload the predictions as a csv file. In each line, the last non-empty cell is used as a prediction.
+Empty lines or lines which only contain empty cells are skipped.
+If the first non-empty line is not valid it is assumed to be the header.
 ```
 - Working Time
-    - the time available to do the test
+    - The time available to do the test
 - Training file
-    - a file with training data (it should contain the features as well as the target which should be predicted).
+    - A file with training data (it should contain the features as well as the target which should be predicted).
     This is optional because the training data can also be provided within the test or just as a link to an external file in the test question.
     If a file is provided, a link to this file will be shown when a particpant takes this test.
 - Test file containing features
-    - a file with test data (it should only contain the features and not the target values). 
+    - A file with test data (it should only contain the features and not the target values). 
     It is optional because you could provide it also in a different way (similar to the training file).
 - Test file containing target
-    - the only required file which should contain only the target values.
+    - The only required file which should contain only the target values in csv format (one value per line; last non-empty cell is used as target; empty lines are skipped).
 - Skip first line
-    - if the first non empty line of the test file with target should be skipped or not.
+    - If the first non empty line of the test file with target should be skipped or not.
 - Evaluation measure
-    - Currently nine evaluation measure are implemented (see Available evaluation measures)
+    - Currently nine evaluation measures are implemented (see section "Available evaluation measures").
 - Expected filename ending
-    - The expected file name ending of files which the participant should upload. During upload only the files with such an extension are shown.
-    It is a comma speparated list of wile extensions without the dot (e.g. doc,xls,odt).
-    The field can be also left empty for no file extension restriction.
+    - The expected endings of files which the participant should upload. During upload only files with these endings are shown. Specify them as a comma-separated list of file extensions without the dot (e.g. "doc,xls,odt"). The field can be left empty for no file ending restriction.
 - Maximum upload size
-    - The maximum upload size in KB for the participants file (solution / file with participants predictions).
+    - The maximum upload size in KB of the participant's submission file.
 - Points
     - The number of points for this question. Depending on how much weight you want to give to this question.
 
