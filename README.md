@@ -102,12 +102,15 @@ If the first non-empty line is not valid it is assumed to be the header.
 #### Available evaluation measures
 
 - Classification
+
 For each of the following measures (except Accuracy), an averaging method has to be selected (micro, macro, weighted or binary). If binary is selected, a positive label has to be provided.
     - Accuracy
     - Precision
     - Recall
     - F-Measure
+    
 - Regression
+
 For each of the following measures minimum and maximum values have to be provided in order to compute a result score between zero and one. In regression the error depends on the domain. Usually the minimum error is zero (but can also be higher in case the problem is hard). The maximum error is usually defined by a baseline. If the error is below the minimum or above the maximum it is set to the lowest or highest possible value, respectively.
     - Max error
     - Mean absolute error
@@ -121,66 +124,66 @@ For each of the following measures minimum and maximum values have to be provide
       curl -F 'removeHeader=True' -F 'gold=@iris_test_class.csv' http://127.0.0.1:41193/metric/precision_micro
       curl -F 'removeHeader=True' -F 'gold=@iris_test_class.csv' -F 'system=@student.csv' http://127.0.0.1:41193/metric/precision_micro
       ```
-    To disable the option for an external evaluation service, remove the lines in class/class.assDataMiningQuestionGUI.php which are indicated by `if you want to disallow the external evaluation`.
+      To disable the option for an external evaluation service, remove the lines in class/class.assDataMiningQuestionGUI.php which are indicated by `if you want to disallow the external evaluation`.
 
 ### Important settings of test
 
 #### Show best solution
 
-This option is set to true when creating a new test and will provide a link to the gold standard if not deactivated:
-1) Within the test, click on "Settings" and then "Scoring and Results" direct below the "Settings" button.
-3) In the chapter "FURTHER DETAILS TO BE INCLUDED IN TEST RESULTS" (de)activate the option "Best Solution" of the first option "Scored Answers of Participant".
+This option is set to true by default and will provide the participants a link to the gold standard after submitting a solution if not deactivated:
+1) In the test, click on "Settings" and then "Scoring and Results" direct below the "Settings" button.
+2) In the section "FURTHER DETAILS TO BE INCLUDED IN TEST RESULTS", deactivate the option "Best Solution" of the first option "Scored Answers of Participant".
 
 #### Activate highscore/ranking
 
-To create a highscore where the participants can see how well they performed in comparison with others, adjust the following settings:
-1) Within the test, click on "Settings" and then "Scoring and Results" direct below the "Settings" button.
-2) In the chapter "SUMMARY TEST RESULTS" activate the option "Access to Test Results" and choose when the participants can access the ranking.
-3) In the chapter "FURTHER DETAILS TO BE INCLUDED IN TEST RESULTS" activate the option "Ranking" and choose the type and length of the ranking.
+To create a highscore board for the participants, adjust the following settings:
+1) In the test, click on "Settings" and then "Scoring and Results" direct below the "Settings" button.
+2) In the section "SUMMARY TEST RESULTS", activate the option "Access to Test Results" and choose whether the participants can access the ranking.
+3) In the section "FURTHER DETAILS TO BE INCLUDED IN TEST RESULTS", activate the option "Ranking" and choose the type and length of the ranking.
 
-As a test participant you can access the highscore at the "Info" Tab of the test when clicking the button "Show Ranking" at the top.
+As a test participant you can access the highscore in the test's "Info" tab by clicking the button "Show Ranking" at the top.
 
 
 
-### Departments/universities which use this plugin
+### Departments/universities using this plugin
 
 - [University Mannheim / Data Mining 1](https://www.uni-mannheim.de/dws/teaching/course-details/courses-for-master-candidates/ie-500-data-mining/)
 
 
 # Development
 
-To download all required development requirements, simply execute `composer install` in the root directory of the plugin.
+To download all development requirements, run `composer install` in the root directory.
 
 #### Run tests and coverage report for class calculateEvalMeasure
 
-To run the tests, execute
+Executing the tests:
 ```
 ./vendor/bin/phpunit --coverage-html ./coverage --whitelist classes/class.calculateEvalMeasure.php  --bootstrap vendor/autoload.php tests/calculateEvalMeasureTest
 ```
-It will also generate a code coverage report in coverage folder.
+A code coverage report is created in the coverage folder.
 
 #### Run psalm (finding errors)
 
-To run psalm, simply execute
+Executing psalm:
 ```
 ./vendor/bin/psalm
 ```
 
 #### Run PHP CodeSniffer (code style check)
 
-To run codesniffer, simply execute
+Executing codesniffer:
 ```
 ./vendor/bin/phpcs -p --standard=PSR12 classes sql tests plugin.php
 ```
 
-To automatically fix some errors run:
+Fixing some of the errors automatically:
 ```
 ./vendor/bin/phpcbf -p --standard=PSR12 classes sql tests plugin.php
 ```
 
 #### Check PHP compatibility
 
-Just run
+Checking PHP code compatibility:
 ```
 ./vendor/bin/phpcs -p --standard=PHPCompatibility --runtime-set testVersion 5.6- classes
 ```
