@@ -102,16 +102,14 @@ If the first non-empty line is not valid it is assumed to be the header.
 #### Available evaluation measures
 
 - Classification
-
-For each of the following measures (except Accuracy), an averaging method has to be selected (micro, macro, weighted or binary). If binary is selected, a positive label has to be provided.
+    * For each of the following measures (except Accuracy), an averaging method has to be selected (micro, macro, weighted or binary). If binary is selected, a positive label has to be provided.
     - Accuracy
     - Precision
     - Recall
     - F-Measure
     
 - Regression
-
-For each of the following measures minimum and maximum values have to be provided in order to compute a result score between zero and one. In regression the error depends on the domain. Usually the minimum error is zero (but can also be higher in case the problem is hard). The maximum error is usually defined by a baseline. If the error is below the minimum or above the maximum it is set to the lowest or highest possible value, respectively.
+    * For each of the following measures minimum and maximum values have to be provided in order to compute a result score between zero and one. In regression the error depends on the domain. Usually the minimum error is zero (but can also be higher in case the problem is hard). The maximum error is usually defined by a baseline. If the error is below the minimum or above the maximum it is set to the lowest or highest possible value, respectively.
     - Max error
     - Mean absolute error
     - Mean squared error (MSE)
