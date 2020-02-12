@@ -38,15 +38,15 @@ Select the question type "Data Mining Question" and click on "Create".
 Now you can change the properties of the question (every property is described in more detail in the section "Description of Data Mining settings").
 
 Example files for train and test can be found in the [doc/exampleFiles](doc/exampleFiles) directory.
-These are generated with the [python file](doc/create_train_test_files.py) in the doc folder.
-Afterwards click on "Save" and check the message on the top (blue background) if the parsing of the file works as expected.
-The test itself also has settings with can be modified. They also have an impact on the data mining question.
-The settings can be found in the test menu at tab "Settings". Some of the important settings are explained below in the section "Important settings of test".
-For testing the question you have to activate the test at "Settings", "General" tab, "Availability" category, "Online" checkbox.
-If you also finished editing these settings, you can try out the test by clicking on the "Info" tab of the test and then "Start the test".
-You should now see the question text and a possibility to upload a file.
-If you uploaded a valid file, click on "Finish the Test" and afterwards you see the results.
-If you click on "Detailed Results" you also see the points per question.
+These are generated with the [python script](doc/create_train_test_files.py) in the doc folder.
+Afterwards click on "Save" and check the notification at the top of the page to make sure the parsing of the files works as expected.
+The test itself has settings that have an impact on the data mining question.
+The settings can be found in the "Settings" tab of the test's menu. The relevant settings are explained below in the section "Important settings of test".
+For testing the question you have to activate the test by checking the "Online" checkbox in its settings.
+After configuring the settings, you can try out the test by clicking on "Start the test" in the "Info" tab.
+There you see the question text and a possibility to upload a result file.
+After uploading a valid file, click on "Finish the Test" and view the results.
+More fine-granular results of the test are shown with a click on "Detailed Results".
 For the data mining question you see the uploaded file as well as the best solution which shows a link to the uploaded gold standard.
 If you want to change this behaviour, you have to change the test settings.
 
@@ -102,30 +102,26 @@ If the first non-empty line is not valid it is assumed to be the header.
 #### Available evaluation measures
 
 - Classification
-    - for each of the following measures (except accuracy), an average has to be selected (micro, macro, weighted or binary). 
-      If binary is selected additionally the positive label has to be provided.
+For each of the following measures (except Accuracy), an averaging method has to be selected (micro, macro, weighted or binary). If binary is selected, a positive label has to be provided.
     - Accuracy
     - Precision
     - Recall
     - F-Measure
 - Regression
-    - for each of the following measures a minimum and maximum values has to be provided because a score between zero and one has to be calculated. 
-    And in regression the error depends on the domain. Usually the minimum error is zero (but can also be higher in case the problem is hard) 
-    and the maximum error is usually defined by a baseline. If the error is below the minimum or above the maximum it is set to the min or max value respectively.
+For each of the following measures minimum and maximum values have to be provided in order to compute a result score between zero and one. In regression the error depends on the domain. Usually the minimum error is zero (but can also be higher in case the problem is hard). The maximum error is usually defined by a baseline. If the error is below the minimum or above the maximum it is set to the lowest or highest possible value, respectively.
     - Max error
     - Mean absolute error
     - Mean squared error (MSE)
     - Root mean squared error (RMSE)
     
 - Custom (external evaluation service)
-    - An external URL pointing to a REST endpoint which does the evaluation. The interface is defined by a [swagger file](doc/swagger.yaml) ([live view](https://editor.swagger.io/?url=https://raw.githubusercontent.com/dwslab/assDataMiningQuestion/master/doc/swagger.yaml)) and a small [python implementation](doc/restEndpoint.py) is available in the docs folder.
-      You can test the endpoint usually by executing 
+    - An external URL pointing to a REST endpoint which does the evaluation. The interface is defined by a [swagger file](doc/swagger.yaml) ([live view](https://editor.swagger.io/?url=https://raw.githubusercontent.com/dwslab/assDataMiningQuestion/master/doc/swagger.yaml)). A basic [python implementation](doc/restEndpoint.py) for such an endpoint is provided in the docs folder.
+      You can test the endpoint by executing 
       ```
       curl -F 'removeHeader=True' -F 'gold=@iris_test_class.csv' http://127.0.0.1:41193/metric/precision_micro
       curl -F 'removeHeader=True' -F 'gold=@iris_test_class.csv' -F 'system=@student.csv' http://127.0.0.1:41193/metric/precision_micro
       ```
-    If the external evaluation is unwanted, then comment the lines in class/class.assDataMiningQuestionGUI.php which are surrounded by `if you want to disallow the external evaluation`.
-
+    To disable the option for an external evaluation service, remove the lines in class/class.assDataMiningQuestionGUI.php which are indicated by `if you want to disallow the external evaluation`.
 
 ### Important settings of test
 
