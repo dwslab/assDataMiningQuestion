@@ -1050,16 +1050,13 @@ class assDataMiningQuestion extends assQuestion
      */
     public function setExportDetailsXLS($worksheet, $startrow, $active_id, $pass)
     {
-
-        $worksheet->setFormattedExcelTitle($worksheet->getColumnCoord(0) . $startrow, $this->getPlugin()->txt('assDataMiningQuestion'));
-        $worksheet->setFormattedExcelTitle($worksheet->getColumnCoord(1) . $startrow, $this->getTitle());
+        parent::setExportDetailsXLS($worksheet, $startrow, $active_id, $pass);
 
         $solution = $this->getSolutionStored($active_id, $pass, true);
         $value1 = isset($solution['value1']) ? $solution['value1'] : '';
         $value2 = isset($solution['value2']) ? $solution['value2'] : '';
 
         $row = $startrow + 1;
-
         $worksheet->setCell($row, 0, $this->plugin->txt('label_value1'));
         $worksheet->setBold($worksheet->getColumnCoord(0) . $row);
         $worksheet->setCell($row, 1, $value1);

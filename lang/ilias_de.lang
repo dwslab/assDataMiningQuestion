@@ -1,8 +1,8 @@
 // German Language File for assDataMiningQuestion Plugin
 <!-- language file start -->
 assDataMiningQuestion#:#Data Mining Question
-label_value1#:#File with solution uploaded
-label_value2#:#Points entered for this answer (any number)
+label_value1#:#File with solution
+label_value2#:#Filename of the original uploaded solution
 any_text#:#any text or empty
 training_file#:#Training file
 training_file_info#:#If given, then this file will be available as download when the question will be shown. It should contain training data for a ML approach (usually features/data with corresponding target value).
