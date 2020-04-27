@@ -79,8 +79,8 @@ class calculateEvalMeasure
         }
         //check point range
         $points = $pointDescriptionObject->getPoints();
-        if ($points < 0.0 || $points > 1.0) {
-            throw new Exception("Computed measure is greater one or smaller zero. Value: " . $points);
+        if ($points > 1.0) {
+            throw new Exception("Computed measure is greater one. Value: " . $points); // we allow also negative points
         }
         $points = $maxPoints * $points; //scale to max points
         $points = round($points, 4); //round points to 4 decimals
